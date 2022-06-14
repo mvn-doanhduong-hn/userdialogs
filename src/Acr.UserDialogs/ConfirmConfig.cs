@@ -21,6 +21,8 @@ namespace Acr.UserDialogs
         //public bool UwpCancelOnEscKey { get; set; }
         //public bool UwpSubmitOnEnterKey { get; set; }
 
+        public bool IsCancellable { get; set; } = true;
+
         public string OkText { get; set; } = !DefaultUseYesNo ? DefaultOkText : DefaultYes;
         public string CancelText { get; set; } = !DefaultUseYesNo ? DefaultCancelText : DefaultNo;
 
@@ -64,6 +66,12 @@ namespace Acr.UserDialogs
         public ConfirmConfig SetCancelText(string text)
         {
             this.CancelText = text;
+            return this;
+        }
+
+        public ConfirmConfig SetCancellable(bool cancel)
+        {
+            this.IsCancellable = cancel;
             return this;
         }
     }

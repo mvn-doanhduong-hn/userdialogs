@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Acr.UserDialogs.Builders;
 using Android.App;
 using Android.Content;
@@ -15,9 +15,12 @@ namespace Acr.UserDialogs.Fragments
             if (args.KeyCode != Keycode.Back)
                 return;
 
-            args.Handled = true;
-            this.Config?.OnAction?.Invoke();
-            this.Dismiss();
+            if (this.Config.IsCancellable)
+            {
+                args.Handled = true;
+                this.Config?.OnAction?.Invoke();
+                this.Dismiss();
+            }
         }
 
 
