@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Android.App;
 using AlertDialog = Android.App.AlertDialog;
 #if ANDROIDX
@@ -16,7 +16,7 @@ namespace Acr.UserDialogs.Builders
         public Dialog Build(Activity activity, ConfirmConfig config)
         {
             return new AlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
-                .SetCancelable(false)
+                .SetCancelable(config.IsCancellable)
                 .SetMessage(config.Message)
                 .SetTitle(config.Title)
                 .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))
@@ -28,7 +28,7 @@ namespace Acr.UserDialogs.Builders
         public Dialog Build(AppCompatActivity activity, ConfirmConfig config)
         {
             return new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
-                .SetCancelable(false)
+                .SetCancelable(config.IsCancellable)
                 .SetMessage(config.Message)
                 .SetTitle(config.Title)
                 .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))

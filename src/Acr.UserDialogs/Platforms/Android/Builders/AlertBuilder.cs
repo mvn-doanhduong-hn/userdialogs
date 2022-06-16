@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Android.App;
 using AlertDialog = Android.App.AlertDialog;
 #if ANDROIDX
@@ -23,7 +23,7 @@ namespace Acr.UserDialogs.Builders
             //var txt = new TextView(context);
 
             return new AlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
-                .SetCancelable(false)
+                .SetCancelable(config.IsCancellable)
                 .SetMessage(config.Message)
                 .SetTitle(config.Title)
                 .SetPositiveButton(config.OkText, (o, e) => config.OnAction?.Invoke())
@@ -34,7 +34,7 @@ namespace Acr.UserDialogs.Builders
         public Dialog Build(AppCompatActivity activity, AlertConfig config)
         {
             return new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
-                .SetCancelable(false)
+                .SetCancelable(config.IsCancellable)
                 .SetMessage(config.Message)
                 .SetTitle(config.Title)
                 .SetPositiveButton(config.OkText, (o, e) => config.OnAction?.Invoke())

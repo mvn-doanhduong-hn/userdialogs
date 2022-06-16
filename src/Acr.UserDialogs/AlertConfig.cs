@@ -17,6 +17,7 @@ namespace Acr.UserDialogs
         //public bool UwpCancelOnEscKey { get; set; }
         //public bool UwpSubmitOnEnterKey { get; set; }
 
+        public bool IsCancellable { get; set; } = true;
 
         public AlertConfig SetOkText(string text)
         {
@@ -42,6 +43,12 @@ namespace Acr.UserDialogs
         public AlertConfig SetAction(Action action)
         {
             this.OnAction = action;
+            return this;
+        }
+        
+        public AlertConfig SetCancellable(bool cancel)
+        {
+            this.IsCancellable = cancel;
             return this;
         }
     }
