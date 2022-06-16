@@ -40,8 +40,8 @@ namespace Acr.UserDialogs
         public override IDisposable Confirm(ConfirmConfig config) => this.Present(() =>
         {
             var dlg = UIAlertController.Create(config.Title ?? String.Empty, config.Message, UIAlertControllerStyle.Alert);
-            dlg.AddAction(UIAlertAction.Create(config.CancelText, UIAlertActionStyle.Cancel, x => config.OnAction?.Invoke(false)));
-            dlg.AddAction(UIAlertAction.Create(config.OkText, UIAlertActionStyle.Default, x => config.OnAction?.Invoke(true)));
+            dlg.AddAction(UIAlertAction.Create(config.CancelText, UIAlertActionStyle.Default, x => config.OnAction?.Invoke(false)));
+            dlg.AddAction(UIAlertAction.Create(config.OkText, UIAlertActionStyle.Cancel, x => config.OnAction?.Invoke(true)));
             return dlg;
         });
 
