@@ -12,6 +12,7 @@ namespace Acr.UserDialogs
         public static string DefaultOkText { get; set; } = "Ok";
         public static string DefaultCancelText { get; set; } = "Cancel";
         public static int? DefaultAndroidStyleId { get; set; }
+        public static ActionStyle DefaultActionStyle { get; set; } = ActionStyle.LeftNormalRightBold;
 
 
         public string Title { get; set; }
@@ -26,6 +27,7 @@ namespace Acr.UserDialogs
         public string OkText { get; set; } = !DefaultUseYesNo ? DefaultOkText : DefaultYes;
         public string CancelText { get; set; } = !DefaultUseYesNo ? DefaultCancelText : DefaultNo;
 
+        public ActionStyle DialogActionStyle { get; set; } = DefaultActionStyle;
 
         public ConfirmConfig UseYesNo()
         {
@@ -74,5 +76,18 @@ namespace Acr.UserDialogs
             this.IsCancellable = cancel;
             return this;
         }
+
+        public ConfirmConfig SetActionStyle(ActionStyle style)
+        {
+            this.DialogActionStyle = style;
+            return this;
+        }
+    }
+
+    public enum ActionStyle
+    {
+        LeftNormalRightNormal,
+        LeftNormalRightBold,
+        LeftRedBoldRightNormal
     }
 }
